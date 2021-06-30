@@ -27,7 +27,13 @@ export default function () {
 				platform: 'node'
 			});
 
-			writeFileSync(join(functions, 'package.json'), JSON.stringify({ type: 'commonjs' }));
+			writeFileSync(join(functions, 'package.json'), JSON.stringify({ 
+				type: 'commonjs',
+				scripts: {
+					"build": "npm install"
+				},
+				dependencies: {}
+			}));
 
 			utils.log.info('Prerendering static pages...');
 			await utils.prerender({
